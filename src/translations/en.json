@@ -45,8 +45,8 @@
     },
     "errorText": {
       "generalInfo": "This field is required.",
-      "emailRequired": "Invalid email. Please re-enter.",
-      "passwordRequired": "Password is required.",
+      "emailRequired": "Invalid email.",
+      "passwordRequired": "Password must be atleast 6 character",
       "validPhonenumber": "Please enter a valid Phone number",
       "nameRequired": "Name is required."
     }
