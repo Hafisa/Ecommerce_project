@@ -1,8 +1,9 @@
-import AppColors from "./AppColors"
-import AppSizes from "./AppSizes"
-import AppStyles from "./AppStyles"
-export default {
-    AppColors,
-    AppSizes,
-    AppStyles,
-}
+ 'use strict';
+
+ import AppColors from './colors';
+ import AppFonts from './fonts';
+ import AppStyles from './styles';
+ import AppSizes from './sizes';
+ 
+ export {AppColors, AppFonts, AppStyles, AppSizes};
+ 

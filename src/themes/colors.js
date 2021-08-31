@@ -15,7 +15,7 @@ const app = {
   inputLabel: '#777777',
   line: '#455B6314',
   error: '#FF0000',
-  placeholder: '#00000050',
+  placeholder: '#000000',
 
   //container
   gray: '#F7F7FA',
@@ -24,7 +24,7 @@ const app = {
   //underlay Colors
   underPrimary: '#3497FD',
   underGray: '#f2f2f2',
-  underYellow: '#F3B45D',
+  darkYellow: '#F29D27',
   underBlue: '#11B2FA',
   disabled: '#bcbcbc',
 
@@ -64,10 +64,12 @@ const bgColor = {
 };
 const button = {
   buttonGreen: '#009971',
+  buttonLifgtGreen: '#C5F6DA',
   buttonRed: '#940000',
   buttonGrey: '#DBE2ED',
   buttonDarkGreen: '#475C2C',
   buttonWhite: '#FFFFFF',
+  color_Gray:'gray'
 };
 const border = {
   borderGreen: '#009971',

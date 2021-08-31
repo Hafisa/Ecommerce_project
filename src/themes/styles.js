@@ -1,13 +1,15 @@
 'use strict';
 import {Platform, Dimensions} from 'react-native';
-import { AppColors } from '.';
+// import { AppColors } from './colors';
+
 import Colors from './colors';
 import Fonts from './fonts';
 import Sizes from './sizes';
+
 export default {
   safeAreaView: {
     flex: 1,
-    backgroundColor:AppColors.whiteBg
+    backgroundColor:Colors.whiteBg
     // height:Dimensions.get('screen').height
   },
   mainContainer: {
@@ -83,7 +85,7 @@ export default {
     position: 'absolute',
     right: -10,
     top: -5,
-    backgroundColor: AppColors.bgRed,
+    backgroundColor: Colors.bgRed,
     borderRadius: 50,
     paddingVertical: 0,
     paddingHorizontal: 8,

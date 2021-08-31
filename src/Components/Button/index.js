@@ -10,18 +10,18 @@ export default props => {
     <View>
       <TouchableHighlight
         activeOpacity={1}
-        underlayColor={props.underlayColor}
-        disabled={props.disabled}
+        underlayColor={props?.underlayColor}
+        disabled={props?.disabled}
         style={
-          props.disabled
+          props?.disabled
             ? [styles.buttonTouchDisabled]
             : [
                 {
-                  backgroundColor: props.buttonColor
-                    ? props.buttonColor
+                  backgroundColor: props?.buttonColor
+                    ? props?.buttonColor
                     : 'transparent',
-                  borderColor: props.borderColor
-                    ? props.borderColor
+                  borderColor: props?.borderColor
+                    ? props?.borderColor
                     : AppColors.brand.primary,
                   width:props?.width
                 },
@@ -30,17 +30,18 @@ export default props => {
               ]
         }
         {...props}
-        onPress={props.onPress.bind(this)}>
+        // onPress={props?.onPress.bind(this)}
+        >
         <Text
           style={[
             AppStyles.regularBoldText,
             styles.buttonText,
             {
-              color: props.textColor ? props.textColor : AppColors.whiteText,
+              color: props?.textColor ? props?.textColor : AppColors.whiteText,
               size:10
             },
           ]}>
-          {props.buttonText}
+          {props?.buttonText}
         </Text>
       </TouchableHighlight>
     </View>
