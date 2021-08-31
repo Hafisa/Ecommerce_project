@@ -1,0 +1,55 @@
+{
+  "General": {
+    "somethingWentWrong": "Something Went Wrong, Please ReTry !!!",
+    "netInfoTitle": "Whoops",
+    "netInfoDetail": "Slow or no internet connection. \n Please check your internet settings"
+  },
+  
+  "SignIn": {
+    "sceneTitle": "Sign In",
+    "placeHolder": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "buttonText": {
+      "login": "LOGIN"
+    },
+    "sceneText": {
+      "login": "Login",
+      "loginInfo": "Enter Your Email & Password",
+      "forgotPassword": "Forgot Password ?",
+      "signUpText": "Don't have an account ?",
+      "signUpButtonText": "  Signup"
+    },
+    "errorText": {
+      "generalInfo": "This field is required.",
+      "emailRequired": "Invalid email. Please re-enter.",
+      "passwordRequired": "Password is required."
+    }
+  },
+
+  "SignUp": {
+    "sceneTitle": "Sign Up",
+    "placeHolder": {
+      "name": "Name",
+      "email": "Email",
+      "number": "Phone Number",
+      "password": "Password"
+    },
+    "buttonText": {
+      "continue": "Continue",
+      "register":"Register"
+    },
+    "sceneText": {
+      "signup": "Register"
+    },
+    "errorText": {
+      "generalInfo": "This field is required.",
+      "emailRequired": "Invalid email. Please re-enter.",
+      "passwordRequired": "Password is required.",
+      "validPhonenumber": "Please enter a valid Phone number",
+      "nameRequired": "Name is required."
+    }
+  }
+
+}

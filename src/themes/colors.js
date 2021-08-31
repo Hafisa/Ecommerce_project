@@ -67,12 +67,12 @@ const button = {
   buttonLifgtGreen: '#C5F6DA',
   buttonRed: '#940000',
   buttonGrey: '#DBE2ED',
-  buttonDarkGreen: '#475C2C',
+  buttonDarkColor: '#e92b29',
   buttonWhite: '#FFFFFF',
   color_Gray:'gray'
 };
 const border = {
-  borderGreen: '#009971',
+  buttonColor: '#ed3a3e',
 };
 
 export default {

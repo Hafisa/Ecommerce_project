@@ -9,7 +9,7 @@ import React from 'react';
    useColorScheme,
    View,
  } from 'react-native';
- 
+ import Navigation from './src/Navigation'
  import {
    Colors,
    DebugInstructions,
@@ -19,7 +19,7 @@ import React from 'react';
  } from 'react-native/Libraries/NewAppScreen';
  import LoginScreen from './src/Screens/LoginScreen'; 
  import HomeScreen from './src/Screens/HomeScreen'
- 
+ import SignupScreen from './src/Screens/SignupScreen'
  const App: () => Node = () => {
    const isDarkMode = useColorScheme() === 'dark';
  
@@ -31,7 +31,8 @@ import React from 'react';
      <SafeAreaView style={[backgroundStyle,{flex:1}]}>
        <StatusBar barStyle={'light-content'} backgroundColor={'#141518'}/>
        {/* <LoginScreen/> */}
-       <HomeScreen/>
+       {/* <HomeScreen/> */}
+       <SignupScreen/>
      </SafeAreaView>
    );
  }; 
