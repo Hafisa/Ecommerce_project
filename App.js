@@ -18,7 +18,7 @@ import React from 'react';
    ReloadInstructions,
  } from 'react-native/Libraries/NewAppScreen';
  import LoginScreen from './src/Screens/LoginScreen'; 
- 
+ import HomeScreen from './src/Screens/HomeScreen'
  
  const App: () => Node = () => {
    const isDarkMode = useColorScheme() === 'dark';
@@ -30,7 +30,8 @@ import React from 'react';
    return (
      <SafeAreaView style={[backgroundStyle,{flex:1}]}>
        <StatusBar barStyle={'light-content'} backgroundColor={'#141518'}/>
-       <LoginScreen/>
+       {/* <LoginScreen/> */}
+       <HomeScreen/>
      </SafeAreaView>
    );
  }; 

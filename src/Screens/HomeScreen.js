@@ -1,15 +1,8 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import Header from '../Components/Header'
-import Posts from '../Components/Posts'
-
+import DrawerNavigator from '../Components/DrawerNavigator'
 const HomeScreen = () => {
     return (
-        <View>
-           <Header/>
-           <Posts/>
-        </View>
+     <DrawerNavigator/>
     )
 }
-
 export default HomeScreen
