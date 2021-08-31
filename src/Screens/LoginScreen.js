@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import Login from '../Components/Login/Login'
+import { View } from 'react-native'
+import Login from '../Components/Login'
 
 const LoginScreen = () => {
     return (
@@ -9,5 +9,4 @@ const LoginScreen = () => {
         </View>
     )
 }
-
 export default LoginScreen

@@ -1,15 +1,14 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import Header from '../Components/Header/Header'
-import Create from '../Components/Create/Create'
+import Create from '../Components/Create'
+import Header from '../Components/Header'
 
 const CreateScreen = () => {
     return (
         <View>
-         <Header title={'Header-Place an Add'}/>
-         <Create/>
+           <Header/>
+           <Create/>
         </View>
     )
 }
-
 export default CreateScreen

@@ -1,10 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+
 
 import React from 'react';
 import type {Node} from 'react';
@@ -21,25 +15,18 @@ import {
 import {
   Colors,
   DebugInstructions,
-  Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import LoginScreen from './src/Screens/LoginScreen';
 import CreateScreen from './src/Screens/CreateScreen';
 import HomeScreen from './src/Screens/HomeScreen';
-import LoginScreen from './src/Screens/LoginScreen';
+
 import SignupScreen from './src/Screens/SignupScreen';
 import ViewPostScreen from './src/Screens/ViewPostScreen';
+ 
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-     
-      
-    </View>
-  );
-};
+
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -52,12 +39,11 @@ const App: () => Node = () => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       
-       {/* <CreateScreen/> */}
-       {/* <HomeScreen/> */}
-       <LoginScreen/>
-       {/* <SignupScreen/> */}
-       {/* <ViewPostScreen/> */}
-      
+    <LoginScreen/>
+{/* <CreateScreen/> */}
+{/* <HomeScreen/> */}
+{/* <SignupScreen/> */}
+{/* <ViewPostScreen/> */}
     </SafeAreaView>
   );
 };

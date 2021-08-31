@@ -1,13 +1,13 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import Header from '../Components/Header/Header'
-import ViewPost from '../Components/ViewPost/ViewPost'
+import Header from '../Components/Header'
+import ViewPost from '../Components/ViewPost'
 
 const ViewPostScreen = () => {
     return (
         <View>
-          <Header title={'Header-Details'}/>
-          <ViewPost/>
+           <Header/>
+           <ViewPost/>
         </View>
     )
 }
