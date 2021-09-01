@@ -22,6 +22,7 @@ import React from 'react';
  import SignupScreen from './src/Screens/SignupScreen'
  import { NavigationContainer } from "@react-navigation/native";
 import { AuthProvider } from './src/database/AuthProvider';
+import Post from './src/database/PostContext'
  const App: () => Node = () => {
    const isDarkMode = useColorScheme() === 'dark';
  
@@ -34,7 +35,9 @@ import { AuthProvider } from './src/database/AuthProvider';
      <SafeAreaView style={[backgroundStyle,{flex:1}]}>
      <StatusBar barStyle={'light-content'} backgroundColor={'#141518'}/>
      <AuthProvider>
+
      <Navigation/>
+
      </AuthProvider>
     
      </SafeAreaView>

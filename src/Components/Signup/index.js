@@ -136,7 +136,6 @@ const {signup} =useContext(AuthContext)
                   <View
                     style={[
                       styles.inputContainerView,
-                      styles.inputContainerViewPassword,
                     ]}>
                     <TextInput
                       placeholderTextColor={AppColors.placeholder}
@@ -157,7 +156,6 @@ const {signup} =useContext(AuthContext)
                   <View
                     style={[
                       styles.inputContainerView,
-                      styles.inputContainerViewPassword,
                     ]}>
                     <TextInput
                       placeholderTextColor={AppColors.placeholder}

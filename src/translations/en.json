@@ -61,7 +61,9 @@
       "description":"Description"
     },
     "buttonText": {
-      "submit": "SUBMIT"
+      "submit": "SUBMIT",
+      "update":"UPDATE",
+      "delete":"DELETE"
     },
     "sceneText": {
       "login": "Login",

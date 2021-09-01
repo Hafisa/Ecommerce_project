@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../database/AuthProvider';
 import { Button, View, Text, TouchableHighlight } from 'react-native';
-
+import styles from './styles'
 export default props => {
     const { user, logout } = useContext(AuthContext)
     return (
@@ -9,7 +9,7 @@ export default props => {
             <TouchableHighlight
                 onPress={() => logout()}
             >
-                <Text>logout</Text>
+                <Text style={styles.logoutText}>logout</Text>
             </TouchableHighlight>
 
         </View>

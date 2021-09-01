@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import {
   View,
   Image,
@@ -26,13 +26,10 @@ import FieldError from '../../Components/FieldError'
 import { AuthContext } from '../../database/AuthProvider';
 import HomeScreen from '../../Screens/HomeScreen';
 //  import Icon from 'react-native-vector-icons/FontAwesome5';
-
-
-
 export default (props) => {
   //  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-
+const {user} =useContext(AuthContext)
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -53,7 +50,6 @@ const {signup} =useContext(AuthContext)
       });
     }
   };
-
   const onSubmit = () => {
     let formSubmit = true;
     if (!form.name) {
@@ -81,13 +77,17 @@ const {signup} =useContext(AuthContext)
         category: form.category,
         price: form.price,
         description: form.description,
-        posteddate:new Date().getDate()+'/'+(new Date().getMonth()+1)+'/'+(new Date().getFullYear())+'-'+new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
+        userId:user.uid,
+        createdAt:new Date().toDateString()
+        // posteddate:new Date().getDate()+'/'+(new Date().getMonth()+1)+'/'+(new Date().getFullYear())+'-'+new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
     }).then(()=>{
-      alert("Product Added")
+      alert("Product Added"),
+      setForm({})
+      props.navigation.navigate("Home")
+      
     })
     }
   };
-
   return (
     <SafeAreaView style={AppStyles.safeAreaView}>
       <View style={AppStyles.mainContainer}>
@@ -103,6 +103,7 @@ const {signup} =useContext(AuthContext)
                       placeholder={AppStrings.translation(
                         'Product.placeHolder.name',
                       )}
+                      value={form.name}
                       style={[AppStyles.regularText, styles.textInput]}
                       onChangeText={value => {
                         onChange({ name: 'name', value });
@@ -115,7 +116,6 @@ const {signup} =useContext(AuthContext)
                   <View
                     style={[
                       styles.inputContainerView,
-                      styles.inputContainerViewPassword,
                     ]}>
                     <TextInput
                       placeholderTextColor={AppColors.placeholder}
@@ -123,6 +123,7 @@ const {signup} =useContext(AuthContext)
                       placeholder={AppStrings.translation(
                         'Product.placeHolder.category',
                       )}
+                      value={form.category}
                       style={[AppStyles.regularText, styles.textInput]}
                       onChangeText={value => {
                         onChange({ name: 'category', value });
@@ -133,13 +134,13 @@ const {signup} =useContext(AuthContext)
                   <View
                     style={[
                       styles.inputContainerView,
-                      styles.inputContainerViewPassword,
                     ]}>
                     <TextInput
                       placeholderTextColor={AppColors.placeholder}
                       placeholder={AppStrings.translation(
                         'Product.placeHolder.price',
                       )}
+                      value={form.price}
                       style={[AppStyles.regularText, styles.textInput]}
                       onChangeText={value => {
                         onChange({ name: 'price', value });
@@ -152,13 +153,13 @@ const {signup} =useContext(AuthContext)
                   <View
                     style={[
                       styles.inputContainerView,
-                      styles.inputContainerViewPassword,
                     ]}>
                     <TextInput
                       placeholderTextColor={AppColors.placeholder}
                       placeholder={AppStrings.translation(
                         'Product.placeHolder.description',
                       )}
+                      value={form.description}
                       style={[AppStyles.regularText, styles.textInput]}
                       onChangeText={value => {
                         onChange({ name: 'description', value });

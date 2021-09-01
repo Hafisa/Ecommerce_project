@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { AppConstants, AppResources, AppStrings } from '../config';
 import Login from '../Screens/LoginScreen';
 import Signup from '../Components/Signup';
+import UpdateScreen from '../Screens/UpdateScreen'
 const Stack = createStackNavigator();
 const AuthStack=()=>{
 return(
@@ -16,6 +17,11 @@ return(
           name={AppConstants.scene.signup}
           component={Signup}
           options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name={AppConstants.scene.UpdateScreen}
+          component={UpdateScreen}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
 )

@@ -1,14 +1,32 @@
 'use strict';
 
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { View, Text, SafeAreaView } from 'react-native';
 import Posts from '../Posts';
 import styles from './styles';
-
+import { AppStyles, AppColors } from '../../themes';
+import Logout from '../Logout';
+import { AuthContext } from '../../database/AuthProvider';
 export default props => {
+
+  const {user} =useContext(AuthContext)
+
+  useEffect(() => {
+    console.log("User in Home ",user)
+  }, [])
   return (
-    <View>
-        <Posts/>
-   </View>
+    <SafeAreaView style={AppStyles.safeAreaView}>
+      <View style={AppStyles.mainContainer}>
+        <View style={styles.signInInfoView}>
+          <View style={styles.bannerContainer}>
+          <Logout/>
+         
+          </View>
+
+        </View>
+
+        <Posts {...props} />
+      </View>
+    </SafeAreaView>
   );
 };

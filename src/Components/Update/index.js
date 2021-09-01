@@ -14,11 +14,13 @@ import {
 import styles from './styles';
 import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from '../../database/AuthProvider';
+import { PostContext } from '../../database/PostContext';
 export default (props) => {
   const [data, setData] = useState();
   const { user } = useContext(AuthContext)
+  const {setPostDetails}=useContext(PostContext)
   useEffect(() => {
-    firestore().collection('products').get().then((snapshot) => {
+    firestore().collection('products').where('userId', '==', user?.uid).get().then((snapshot) => {
       const allPost = snapshot.docs.map((product) => {
         return {
           ...product.data(),
@@ -29,12 +31,17 @@ export default (props) => {
     })
   });
   const renderItem = ({ item }) => (
-    <View style={styles.item}>
+    <TouchableOpacity 
+    onPress={()=>
+     { setPostDetails(item)
+      props.navigation.navigate("Update")}
+    }
+    style={styles.item} >
       <Image source={require('../../images/Product.png')} style={styles.itemimage} />
       <View style={styles.itemContainer}>
         <View style={styles.itemContent}>
           <Text style={styles.title}>{item?.name}</Text>
-              <Text style={styles.subtext}>{item?.category}</Text>
+          <Text style={styles.subtext}>{item?.category}</Text>
         </View>
         <View style={styles.itemContent}>
           <Text style={styles.title2}>
@@ -48,7 +55,7 @@ export default (props) => {
         </View>
 
       </View>
-    </View>
+    </TouchableOpacity>
   );
   return (
     <View>
