@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import UpdateProduct from '../Components/UpdateProduct';
 import Update from '../Components/Update'
-import Header from '../Components/Header'
 import Translations from '../translations';
 const UpdateList = (props) => {
     const [flag, setFlag] = React.useState(false)
