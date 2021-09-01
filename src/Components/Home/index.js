@@ -8,23 +8,15 @@ import { AppStyles, AppColors } from '../../themes';
 import Logout from '../Logout';
 import { AuthContext } from '../../database/AuthProvider';
 export default props => {
-
-  const {user} =useContext(AuthContext)
-
-  useEffect(() => {
-    console.log("User in Home ",user)
-  }, [])
+  const { user } = useContext(AuthContext)
   return (
     <SafeAreaView style={AppStyles.safeAreaView}>
       <View style={AppStyles.mainContainer}>
         <View style={styles.signInInfoView}>
           <View style={styles.bannerContainer}>
-          <Logout/>
-         
+            <Logout />
           </View>
-
         </View>
-
         <Posts {...props} />
       </View>
     </SafeAreaView>

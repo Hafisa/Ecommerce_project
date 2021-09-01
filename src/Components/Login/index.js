@@ -14,37 +14,23 @@ import {
   ScrollView,
 } from 'react-native';
 import { useForm } from 'react-hook-form';
-
-import messaging from '@react-native-firebase/messaging';
-
 import Button from '../Button';
-
 import { AppStyles, AppColors } from '../../themes';
 import styles from './styles';
 import { AppResources, AppStrings, AppConstants } from '../../config';
 import FieldError from '../../Components/FieldError'
 import { AuthContext } from '../../database/AuthProvider';
-//  import Icon from 'react-native-vector-icons/FontAwesome5';
-
-
-
 export default (props) => {
-
-  //  const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
-
+ const { register, handleSubmit } = useForm();
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [hidePass, setHidePass] = useState(true);
   const { login } = useContext(AuthContext)
-
   useEffect(() => {
     register('username');
     register('password');
   }, [register]);
-
-
   const onChange = ({ name, value }) => {
     setForm({ ...form, [name]: value });
     if (value !== '') {
@@ -86,14 +72,12 @@ export default (props) => {
       login(form)
     }
   };
-
   return (
     <SafeAreaView style={AppStyles.safeAreaView}>
       <View style={AppStyles.mainContainer}>
         <View style={[styles.sceneView]}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={[styles.sceneItemsView]}>
-
               <View style={[styles.signInAreaContainer]}>
                 <View style={[styles.signInTitleView]}>
                   <Text style={[AppStyles.titleText]}>
@@ -142,7 +126,6 @@ export default (props) => {
                         onChange({ name: 'password', value });
                       }}
                     />
-
                   </View>
                   {errors.password && (
                     <FieldError errorText={errors.password} />
@@ -152,12 +135,7 @@ export default (props) => {
                   style={[styles.signInForgotPwdView, AppStyles.rightAligned]}>
                   <TouchableOpacity
                     activeOpacity={0.7}
-                    onPress={() => {
-                      alert("HAi")
-                      //  navigation.navigate(AppConstants.scene.home, {
-                      //    thisScene: 'emailEntryScene',
-                      //  });
-                    }}>
+                    >
                     <Text style={[AppStyles.infoText]}>
                       {AppStrings.translation(
                         'SignIn.sceneText.forgotPassword',

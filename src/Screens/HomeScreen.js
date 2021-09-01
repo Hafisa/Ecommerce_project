@@ -2,7 +2,7 @@ import React from 'react'
 import DrawerNavigator from '../Components/DrawerNavigator'
 const HomeScreen = () => {
     return (
-     <DrawerNavigator/>
+        <DrawerNavigator />
     )
 }
 export default HomeScreen

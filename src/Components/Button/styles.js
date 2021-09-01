@@ -1,7 +1,7 @@
 'use strict';
 
-import {StyleSheet} from 'react-native';
-import {AppColors,AppSizes} from '../../themes'
+import { StyleSheet } from 'react-native';
+import { AppColors, AppSizes } from '../../themes'
 
 export default StyleSheet.create({
   buttonTouch: {

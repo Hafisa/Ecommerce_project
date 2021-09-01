@@ -4,7 +4,6 @@ import React from 'react';
 import {View, TouchableHighlight, Text} from 'react-native';
 import {AppColors, AppStyles} from '../../themes'
 import styles from './styles';
-
 export default props => {
   return (
     <View>
@@ -30,7 +29,6 @@ export default props => {
               ]
         }
         {...props}
-        // onPress={props?.onPress.bind(this)}
         >
         <Text
           style={[

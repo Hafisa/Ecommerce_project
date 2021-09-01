@@ -16,23 +16,14 @@ import {
 } from 'react-native';
 import { useForm } from 'react-hook-form';
 import firestore from '@react-native-firebase/firestore';
-import messaging from '@react-native-firebase/messaging';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { userRef } from '../../database/firebaseDb';
 import Button from '../Button';
 import { AppStyles, AppColors } from '../../themes';
 import styles from './styles';
 import { AppResources, AppStrings, AppConstants } from '../../config';
 import FieldError from '../../Components/FieldError'
 import { AuthContext } from '../../database/AuthProvider';
-import HomeScreen from '../../Screens/HomeScreen';
 import { PostContext } from '../../database/PostContext';
-//  import Icon from 'react-native-vector-icons/FontAwesome5';
-
-
-
 export default (props) => {
-    //  const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
     const { user } = useContext(AuthContext)
     const [errors, setErrors] = useState({});
@@ -113,7 +104,7 @@ export default (props) => {
     return (
 
         <SafeAreaView style={AppStyles.safeAreaView}>
-            {postDetails&&form ?
+            {postDetails && form ?
                 <View style={AppStyles.mainContainer}>
                     <View style={[styles.sceneView]}>
                         <ScrollView showsVerticalScrollIndicator={false}>

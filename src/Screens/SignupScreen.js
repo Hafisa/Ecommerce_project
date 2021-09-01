@@ -6,7 +6,6 @@ const SignupScreen = (props) => {
     const [flag, setFlag] = React.useState(false)
 
     React.useEffect(() => {
-        console.log("signup---",props)
         settranslations()
     }, []);
     const settranslations = async () => {
@@ -15,7 +14,7 @@ const SignupScreen = (props) => {
     }
     return (
         <View>
-           <Signup props={props.navigation}/>
+            <Signup props={props.navigation} />
         </View>
     )
 }

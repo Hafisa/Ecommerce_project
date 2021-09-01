@@ -18,7 +18,7 @@ import { PostContext } from '../../database/PostContext';
 export default (props) => {
   const [data, setData] = useState();
   const { user } = useContext(AuthContext)
-  const {setPostDetails}=useContext(PostContext)
+  const { setPostDetails } = useContext(PostContext)
   useEffect(() => {
     firestore().collection('products').where('userId', '==', user?.uid).get().then((snapshot) => {
       const allPost = snapshot.docs.map((product) => {
@@ -31,12 +31,13 @@ export default (props) => {
     })
   });
   const renderItem = ({ item }) => (
-    <TouchableOpacity 
-    onPress={()=>
-     { setPostDetails(item)
-      props.navigation.navigate("Update")}
-    }
-    style={styles.item} >
+    <TouchableOpacity
+      onPress={() => {
+        setPostDetails(item)
+        props.navigation.navigate("Update")
+      }
+      }
+      style={styles.item} >
       <Image source={require('../../images/Product.png')} style={styles.itemimage} />
       <View style={styles.itemContainer}>
         <View style={styles.itemContent}>
@@ -59,7 +60,6 @@ export default (props) => {
   );
   return (
     <View>
-
       <FlatList
         data={data}
         renderItem={renderItem}

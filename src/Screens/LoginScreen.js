@@ -7,7 +7,6 @@ const LoginScreen = (props) => {
     const [flag, setFlag] = React.useState(false)
 
     React.useEffect(() => {
-        console.log(";;;;;;;;;;;;",props)
         settranslations()
     }, []);
     const settranslations = async () => {
@@ -16,7 +15,7 @@ const LoginScreen = (props) => {
     }
     return (
         <View>
-            <Login {...props}/>
+            <Login {...props} />
         </View>
     )
 }

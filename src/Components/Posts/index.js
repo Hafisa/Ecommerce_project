@@ -5,10 +5,6 @@ import {
   View,
   Image,
   Text,
-  StatusBar,
-  SafeAreaView,
-  TouchableOpacity,
-  StyleSheet,
   FlatList
 } from 'react-native';
 import styles from './styles';
@@ -34,7 +30,7 @@ export default (props) => {
       <View style={styles.itemContainer}>
         <View style={styles.itemContent}>
           <Text style={styles.title}>{item?.name}</Text>
-              <Text style={styles.subtext}>{item?.category}</Text>
+          <Text style={styles.subtext}>{item?.category}</Text>
         </View>
         <View style={styles.itemContent}>
           <Text style={styles.title2}>
@@ -52,7 +48,6 @@ export default (props) => {
   );
   return (
     <View>
-
       <FlatList
         data={data}
         renderItem={renderItem}

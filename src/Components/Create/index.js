@@ -15,26 +15,20 @@ import {
 } from 'react-native';
 import { useForm } from 'react-hook-form';
 import firestore from '@react-native-firebase/firestore';
-import messaging from '@react-native-firebase/messaging';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { userRef } from '../../database/firebaseDb';
 import Button from '../Button';
 import { AppStyles, AppColors } from '../../themes';
 import styles from './styles';
 import { AppResources, AppStrings, AppConstants } from '../../config';
 import FieldError from '../../Components/FieldError'
 import { AuthContext } from '../../database/AuthProvider';
-import HomeScreen from '../../Screens/HomeScreen';
-//  import Icon from 'react-native-vector-icons/FontAwesome5';
 export default (props) => {
-  //  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-const {user} =useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [hidePass, setHidePass] = useState(true);
-const {signup} =useContext(AuthContext)
+  const { signup } = useContext(AuthContext)
   const onChange = ({ name, value }) => {
     setForm({ ...form, [name]: value });
     if (value !== '') {
@@ -71,21 +65,18 @@ const {signup} =useContext(AuthContext)
       });
     }
     if (formSubmit == true) {
-      // signup(form)
       firestore().collection('products').add({
         name: form.name,
         category: form.category,
         price: form.price,
         description: form.description,
-        userId:user.uid,
-        createdAt:new Date().toDateString()
-        // posteddate:new Date().getDate()+'/'+(new Date().getMonth()+1)+'/'+(new Date().getFullYear())+'-'+new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
-    }).then(()=>{
-      alert("Product Added"),
-      setForm({})
-      props.navigation.navigate("Home")
-      
-    })
+        userId: user.uid,
+        createdAt: new Date().toDateString()
+     }).then(() => {
+        alert("Product Added"),
+          setForm({})
+        props.navigation.navigate("Home")
+      })
     }
   };
   return (
@@ -129,7 +120,6 @@ const {signup} =useContext(AuthContext)
                         onChange({ name: 'category', value });
                       }}
                     />
-
                   </View>
                   <View
                     style={[
@@ -167,7 +157,6 @@ const {signup} =useContext(AuthContext)
                     />
                   </View>
                 </View>
-
                 <View style={styles.footerButton}>
                   <Button
                     title="Submit"

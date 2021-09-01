@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
                         await auth().signInWithEmailAndPassword(form.username, form.password)
 
                     } catch (e) {
-                        console.log(e, e.Error)
                         alert("Email or password is incorrect!")
                     }
                 },
