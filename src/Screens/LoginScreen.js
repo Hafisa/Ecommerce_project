@@ -16,7 +16,7 @@ const LoginScreen = (props) => {
     }
     return (
         <View>
-            <Login props={props.navigation}/>
+            <Login {...props}/>
         </View>
     )
 }

@@ -54,6 +54,7 @@ const text = {
   textWhite: '#FFFFFF',
   textGreen: '#009971',
   textBlack: '#000000',
+  textRed:'#ed3a3e'
 };
 
 const bgColor = {

@@ -12,7 +12,8 @@
       "password": "Password"
     },
     "buttonText": {
-      "login": "LOGIN"
+      "login": "LOGIN",
+      "signup":"Register a new user"
     },
     "sceneText": {
       "login": "Login",
@@ -38,10 +39,10 @@
     },
     "buttonText": {
       "continue": "Continue",
-      "register":"Register"
+      "signup":"SIGNUP"
     },
     "sceneText": {
-      "signup": "Register"
+      "signup": "Register Here"
     },
     "errorText": {
       "generalInfo": "This field is required.",
@@ -50,6 +51,29 @@
       "validPhonenumber": "Please enter a valid Phone number",
       "nameRequired": "Name is required."
     }
+  },
+  "Product": {
+    "sceneTitle": "Product",
+    "placeHolder": {
+      "name": "Name",
+      "category": "Category",
+      "price": "Price",
+      "description":"Description"
+    },
+    "buttonText": {
+      "submit": "SUBMIT"
+    },
+    "sceneText": {
+      "login": "Login",
+      "loginInfo": "Enter Your Email & Password",
+      "forgotPassword": "Forgot Password ?",
+      "signUpText": "Don't have an account ?",
+      "signUpButtonText": "  Signup"
+    },
+    "errorText": {
+      "generalInfo": "This field is required.",
+      "nameRequired": "Name is required.",
+      "priceRequired": "Price is required."
+    }
   }
-
 }

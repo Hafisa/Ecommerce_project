@@ -5,6 +5,7 @@ const baseURL = '';
 const scene = {
  login:"login",
   home: 'home',
+  signup:'signup'
 
 };
 

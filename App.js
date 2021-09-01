@@ -20,6 +20,8 @@ import React from 'react';
  import LoginScreen from './src/Screens/LoginScreen'; 
  import HomeScreen from './src/Screens/HomeScreen'
  import SignupScreen from './src/Screens/SignupScreen'
+ import { NavigationContainer } from "@react-navigation/native";
+import { AuthProvider } from './src/database/AuthProvider';
  const App: () => Node = () => {
    const isDarkMode = useColorScheme() === 'dark';
  
@@ -28,12 +30,24 @@ import React from 'react';
    };
  
    return (
+     <>
      <SafeAreaView style={[backgroundStyle,{flex:1}]}>
-       <StatusBar barStyle={'light-content'} backgroundColor={'#141518'}/>
-       {/* <LoginScreen/> */}
-       {/* <HomeScreen/> */}
-       <SignupScreen/>
+     <StatusBar barStyle={'light-content'} backgroundColor={'#141518'}/>
+     <AuthProvider>
+     <Navigation/>
+     </AuthProvider>
+    
      </SafeAreaView>
+     </>
+//      <SafeAreaView style={[backgroundStyle,{flex:1}]}>
+//        <StatusBar barStyle={'light-content'} backgroundColor={'#141518'}/>
+// {/*      
+//        <NavigationContainer>
+//        {/* <SignupScreen/> */}
+//          {/* <LoginScreen/> */}
+//        {/* <HomeScreen/> */}
+//        <NavigationContainer> 
+//      </SafeAreaView>
    );
  }; 
  export default App;

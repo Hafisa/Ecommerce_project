@@ -1,13 +1,191 @@
+
+
 'use strict';
 
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, { useState, useEffect, useContext } from 'react';
+import {
+  View,
+  Image,
+  Text,
+  StatusBar,
+  TextInput,
+  SafeAreaView,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
+import { useForm } from 'react-hook-form';
+import firestore from '@react-native-firebase/firestore';
+import messaging from '@react-native-firebase/messaging';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { userRef } from '../../database/firebaseDb';
+import Button from '../Button';
+import { AppStyles, AppColors } from '../../themes';
 import styles from './styles';
+import { AppResources, AppStrings, AppConstants } from '../../config';
+import FieldError from '../../Components/FieldError'
+import { AuthContext } from '../../database/AuthProvider';
+import HomeScreen from '../../Screens/HomeScreen';
+//  import Icon from 'react-native-vector-icons/FontAwesome5';
 
-export default props => {
+
+
+export default (props) => {
+  //  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm();
+
+  const [form, setForm] = useState({});
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [hidePass, setHidePass] = useState(true);
+const {signup} =useContext(AuthContext)
+  const onChange = ({ name, value }) => {
+    setForm({ ...form, [name]: value });
+    if (value !== '') {
+      setErrors(prev => {
+        return { ...prev, [name]: null };
+      });
+    } else {
+      setErrors(prev => {
+        return {
+          ...prev,
+          [name]: AppStrings.translation('SignUp.errorText.generalInfo'),
+        };
+      });
+    }
+  };
+
+  const onSubmit = () => {
+    let formSubmit = true;
+    if (!form.name) {
+      formSubmit = false;
+      setErrors(prev => {
+        return {
+          ...prev,
+          name: AppStrings.translation('Product.errorText.nameRequired'),
+        };
+      });
+    }
+    if (!form.price || !(/^[0-9.]*$/.exec(form.price))) {
+      formSubmit = false;
+      setErrors(prev => {
+        return {
+          ...prev,
+          price: AppStrings.translation('Product.errorText.priceRequired'),
+        };
+      });
+    }
+    if (formSubmit == true) {
+      // signup(form)
+      firestore().collection('products').add({
+        name: form.name,
+        category: form.category,
+        price: form.price,
+        description: form.description,
+        posteddate:new Date().getDate()+'/'+(new Date().getMonth()+1)+'/'+(new Date().getFullYear())+'-'+new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
+    }).then(()=>{
+      alert("Product Added")
+    })
+    }
+  };
+
   return (
-    <View>
-        <Text>Create test file</Text>
-   </View>
+    <SafeAreaView style={AppStyles.safeAreaView}>
+      <View style={AppStyles.mainContainer}>
+        <View style={[styles.sceneView]}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <View style={[styles.sceneItemsView]}>
+              <View style={[styles.signInAreaContainer]}>
+                <View style={styles.emailPasswordView}>
+                  <View style={styles.inputContainerView}>
+                    <TextInput
+                      placeholderTextColor={AppColors.placeholder}
+                      autoCapitalize="none"
+                      placeholder={AppStrings.translation(
+                        'Product.placeHolder.name',
+                      )}
+                      style={[AppStyles.regularText, styles.textInput]}
+                      onChangeText={value => {
+                        onChange({ name: 'name', value });
+                      }}
+                    />
+                  </View>
+                  {errors.name && (
+                    <FieldError errorText={errors.name} />
+                  )}
+                  <View
+                    style={[
+                      styles.inputContainerView,
+                      styles.inputContainerViewPassword,
+                    ]}>
+                    <TextInput
+                      placeholderTextColor={AppColors.placeholder}
+                      autoCapitalize="none"
+                      placeholder={AppStrings.translation(
+                        'Product.placeHolder.category',
+                      )}
+                      style={[AppStyles.regularText, styles.textInput]}
+                      onChangeText={value => {
+                        onChange({ name: 'category', value });
+                      }}
+                    />
+
+                  </View>
+                  <View
+                    style={[
+                      styles.inputContainerView,
+                      styles.inputContainerViewPassword,
+                    ]}>
+                    <TextInput
+                      placeholderTextColor={AppColors.placeholder}
+                      placeholder={AppStrings.translation(
+                        'Product.placeHolder.price',
+                      )}
+                      style={[AppStyles.regularText, styles.textInput]}
+                      onChangeText={value => {
+                        onChange({ name: 'price', value });
+                      }}
+                    />
+                  </View>
+                  {errors.price && (
+                    <FieldError errorText={errors.price} />
+                  )}
+                  <View
+                    style={[
+                      styles.inputContainerView,
+                      styles.inputContainerViewPassword,
+                    ]}>
+                    <TextInput
+                      placeholderTextColor={AppColors.placeholder}
+                      placeholder={AppStrings.translation(
+                        'Product.placeHolder.description',
+                      )}
+                      style={[AppStyles.regularText, styles.textInput]}
+                      onChangeText={value => {
+                        onChange({ name: 'description', value });
+                      }}
+                    />
+                  </View>
+                </View>
+
+                <View style={styles.footerButton}>
+                  <Button
+                    title="Submit"
+                    onPress={handleSubmit(onSubmit)}
+                    underlayColor={AppColors.buttonDarkColor}
+                    buttonColor={AppColors.buttonColor}
+                    borderColor={AppColors.buttonColor}
+                    buttonText={AppStrings.translation(
+                      'Product.buttonText.submit',
+                    )}
+                    textColor={'#FFFFFF'}
+                  />
+                </View>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 };
+
