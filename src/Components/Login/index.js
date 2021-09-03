@@ -69,7 +69,7 @@ export default (props) => {
       });
     }
     if (formSubmit == true) {
-      login(form)
+     login(form)
     }
   };
   return (

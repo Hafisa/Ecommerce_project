@@ -23,6 +23,8 @@ import { AppResources, AppStrings, AppConstants } from '../../config';
 import FieldError from '../../Components/FieldError'
 import { AuthContext } from '../../database/AuthProvider';
 import { PostContext } from '../../database/PostContext';
+import { LongPressGestureHandler } from 'react-native-gesture-handler';
+import Loader from '../Loader'
 export default (props) => {
     const { register, handleSubmit } = useForm();
     const { user } = useContext(AuthContext)
@@ -51,8 +53,10 @@ export default (props) => {
         }
     };
     const onDelete = () => {
+        setLoading(true)
         try {
             firestore().collection('products').doc(postDetails.id).delete().then(() => {
+                setLoading(false)
                 alert("Product Deleted")
                 props.navigation.navigate("Update Product List")
             })
@@ -82,6 +86,7 @@ export default (props) => {
             });
         }
         if (formSubmit == true) {
+            setLoading(true)
             try {
                 firestore().collection('products').doc(postDetails.id).set({
                     name: form.name,
@@ -91,6 +96,7 @@ export default (props) => {
                     userId: user.uid,
                     createdAt: new Date().toDateString()
                 }).then(() => {
+                    setLoading(false)
                     alert("Product Updated")
                     props.navigation.navigate("Update Product List")
                 })
@@ -104,7 +110,10 @@ export default (props) => {
     return (
 
         <SafeAreaView style={AppStyles.safeAreaView}>
-            {postDetails && form ?
+            {loading?
+            <Loader/>
+            :
+            postDetails && form ?
                 <View style={AppStyles.mainContainer}>
                     <View style={[styles.sceneView]}>
                         <ScrollView showsVerticalScrollIndicator={false}>

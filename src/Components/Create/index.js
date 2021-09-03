@@ -21,6 +21,7 @@ import styles from './styles';
 import { AppResources, AppStrings, AppConstants } from '../../config';
 import FieldError from '../../Components/FieldError'
 import { AuthContext } from '../../database/AuthProvider';
+import Loader from '../Loader' 
 export default (props) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext)
@@ -65,6 +66,7 @@ export default (props) => {
       });
     }
     if (formSubmit == true) {
+      setLoading(true)
       firestore().collection('products').add({
         name: form.name,
         category: form.category,
@@ -73,6 +75,7 @@ export default (props) => {
         userId: user.uid,
         createdAt: new Date().toDateString()
      }).then(() => {
+       setLoading(false)
         alert("Product Added"),
           setForm({})
         props.navigation.navigate("Home")
@@ -84,6 +87,9 @@ export default (props) => {
       <View style={AppStyles.mainContainer}>
         <View style={[styles.sceneView]}>
           <ScrollView showsVerticalScrollIndicator={false}>
+            {loading?
+            <Loader/>
+            :
             <View style={[styles.sceneItemsView]}>
               <View style={[styles.signInAreaContainer]}>
                 <View style={styles.emailPasswordView}>
@@ -172,7 +178,8 @@ export default (props) => {
                 </View>
               </View>
             </View>
-          </ScrollView>
+}
+        </ScrollView>
         </View>
       </View>
     </SafeAreaView>

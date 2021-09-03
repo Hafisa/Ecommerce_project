@@ -5,14 +5,18 @@ import {
   View,
   Image,
   Text,
+  StatusBar,
+  SafeAreaView,
+  TouchableOpacity,
+  StyleSheet,
   FlatList
 } from 'react-native';
 import styles from './styles';
 import firestore from '@react-native-firebase/firestore';
-import { AuthContext } from '../../database/AuthProvider';
+import { PostContext } from '../../database/PostContext';
 export default (props) => {
   const [data, setData] = useState();
-  const { user } = useContext(AuthContext)
+  const { setPostDetails } = useContext(PostContext)
   useEffect(() => {
     firestore().collection('products').get().then((snapshot) => {
       const allPost = snapshot.docs.map((product) => {
@@ -25,7 +29,13 @@ export default (props) => {
     })
   });
   const renderItem = ({ item }) => (
-    <View style={styles.item}>
+    <TouchableOpacity
+      onPress={() => {
+        setPostDetails(item)
+        props.navigation.navigate("View")
+      }
+      }
+      style={styles.item} >
       <Image source={require('../../images/Product.png')} style={styles.itemimage} />
       <View style={styles.itemContainer}>
         <View style={styles.itemContent}>
@@ -44,7 +54,7 @@ export default (props) => {
         </View>
 
       </View>
-    </View>
+    </TouchableOpacity>
   );
   return (
     <View>
