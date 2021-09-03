@@ -9,7 +9,8 @@ import {
   SafeAreaView,
   TouchableOpacity,
   StyleSheet,
-  FlatList
+  FlatList,
+  ScrollView
 } from 'react-native';
 import styles from './styles';
 import firestore from '@react-native-firebase/firestore';
@@ -57,14 +58,14 @@ export default (props) => {
     </TouchableOpacity>
   );
   return (
-    <View>
+    <ScrollView>
       <FlatList
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item?.id}
         scrollEnabled={true}
       />
-    </View>
+    </ScrollView>
   );
 };
 
