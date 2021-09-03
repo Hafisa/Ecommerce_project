@@ -18,9 +18,9 @@ export default props => {
             <Logout />
           </View>
         </View>
-        <ScrollView>
+        <View>
         <Posts {...props} />
-        </ScrollView>
+        </View>
       
       </View>
     </SafeAreaView>
